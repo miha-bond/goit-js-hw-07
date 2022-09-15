@@ -3,7 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryRef = document.querySelector('.gallery');
 galleryRef.addEventListener('click', onImgClick);
-galleryRef.addEventListener('keydown', offImgPush);
 
 const listGalleryEl = galleryItems.map(({ preview, original, description }) => {
   return `
@@ -21,17 +20,19 @@ function onImgClick(evt) {
   if (evt.target.nodeName !== 'IMG') {
     return;
   }
+
   const instance = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
   `);
   instance.show();
+
+  galleryRef.addEventListener('keydown', evt => {
+    if (evt.code === 'Escape') {
+      instance.close();
+    }
+  });
 }
 
-function offImgPush(evt) {
-  if (evt.code === 'Escape') {
-    instance.close();
-  }
-}
 //todo Завдання 1 - галерея зображень
 //! Створи галерею з можливістю кліку по її елементах і перегляду повнорозмірного зображення у модальному вікні. Подивися демо відео роботи галереї.
 //? Виконуй це завдання у файлах 01-gallery.html і 01-gallery.js. Розбий його на декілька підзавдань:

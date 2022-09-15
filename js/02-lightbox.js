@@ -1,9 +1,7 @@
 import { galleryItems } from './gallery-items.js';
-// Change code below this line
-
+//
 const galleryRef = document.querySelector('.gallery');
-galleryRef.addEventListener('click', onImgGallery);
-
+//
 const addItemGallery = galleryItems.map(
   ({ preview, original, description }) => {
     return `
@@ -16,35 +14,30 @@ const addItemGallery = galleryItems.map(
 );
 let markup = addItemGallery.join('');
 galleryRef.insertAdjacentHTML('afterbegin', markup);
-
-function onImgGallery(evt) {
-  evt.preventDefault();
-  if (evt.target.nodeName !== 'IMG') {
-    return;
-  }
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionType: 'attr',
+//
+//
+galleryRef.addEventListener(
+  'click',
+  new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 400,
+    captionDelay: 250,
     showCounter: true,
     enableKeyboard: true,
-    docClose: true,
     scrollZoom: true,
-    animationSlide: true,
     maxZoom: 1.5,
-  });
-  lightbox.open();
-}
-
+  }),
+);
+//
+//
+//
+//
 //todo Завдання 2 - бібліотека SimpleLightbox
 //! Зроби таку саму галерею як в першому завданні, але використовуючи бібліотеку SimpleLightbox, яка візьме на себе обробку кліків по зображеннях, відкриття і закриття модального вікна, а також гортання зображень за допомогою клавіатури.
 
 //? Необхідно трохи змінити розмітку картки галереї, використовуй цей шаблон.
 
-// <a class="gallery__item" href="large-image.jpg"> */}
-//   <img class="gallery__image" src="small-image.jpg" alt="Image description" /> */}
+// <a class="gallery__item" href="large-image.jpg">
+//   <img class="gallery__image" src="small-image.jpg" alt="Image description" />
 // </a>
 
 //* Виконуй це завдання у файлах 02-lightbox.html і 02-lightbox.js. Розбий його на декілька підзавдань:

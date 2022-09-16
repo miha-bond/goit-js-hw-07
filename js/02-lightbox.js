@@ -16,17 +16,14 @@ let markup = addItemGallery.join('');
 galleryRef.insertAdjacentHTML('afterbegin', markup);
 //
 //
-galleryRef.addEventListener(
-  'click',
-  new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-    showCounter: true,
-    enableKeyboard: true,
-    scrollZoom: true,
-    maxZoom: 1.5,
-  }),
-);
+new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  showCounter: true,
+  enableKeyboard: true,
+  scrollZoom: true,
+  maxZoom: 1.5,
+});
 //
 //
 //
